@@ -17,3 +17,7 @@ Route::get('/faq', function () {
 Route::get('/profile', function () {
     return view('profile');
 });
+
+Route::get('/blog', function () {
+    return view('blog');
+});

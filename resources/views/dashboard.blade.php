@@ -290,3 +290,72 @@
     <br />
 
 </x-layout.main>
+
+
+<script>
+    /**
+     * EC progress bar
+     */
+
+// Constants
+    const totalEC = 60;
+    const nbsaBoundary = 45;
+
+    // Load ECs from local storage
+    function loadECs() {
+        const obtainedEC = localStorage.getItem("obtainedEC");
+        if (obtainedEC !== null) {
+            updateProgressBar(parseFloat(obtainedEC)); // Gebruik parseFloat in plaats van parseInt
+        }
+    }
+
+    // Update progress bar function
+    function updateProgressBar(obtainedEC) {
+        const greenPercentage = Math.min((obtainedEC / nbsaBoundary) * 100, 100); // Green part goes from 0 to 45 ECs
+        const redPercentage = Math.max(
+            ((nbsaBoundary - obtainedEC) / nbsaBoundary) * 100,
+            0
+        ); // Red part decreases until 45 ECs
+        const blankPercentage =
+            obtainedEC >= nbsaBoundary
+                ? ((totalEC - obtainedEC) / totalEC) * 100
+                : ((totalEC - nbsaBoundary) / totalEC) * 100; // Blank part from 45 to 60 ECs
+
+        // Update green progress bar width
+        const greenBar = document.getElementById("progress-bar-green");
+        greenBar.style.width = greenPercentage + "%";
+        greenBar.innerHTML = obtainedEC.toFixed(2) + "/60 EC"; // Geef EC's weer met 2 decimalen
+
+        // Update red progress bar width (only from 0 to 45 ECs)
+        const redBar = document.getElementById("progress-bar-red");
+        redBar.style.width = redPercentage + "%";
+
+        // Update blank progress bar width (from 46 to 60 ECs)
+        const blankBar = document.getElementById("progress-bar-blank");
+        blankBar.style.width = blankPercentage + "%";
+
+        // Show warning if below NBSA boundary
+        if (obtainedEC < nbsaBoundary) {
+            document.getElementById("nbsa-warning").style.display = "block";
+        } else {
+            document.getElementById("nbsa-warning").style.display = "none";
+        }
+    }
+
+    // Event listener for form submission
+    document.getElementById("ec-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const obtainedEC = parseFloat(document.getElementById("obtained-ec").value); // Gebruik parseFloat om decimale waarden te accepteren
+
+        if (!isNaN(obtainedEC) && obtainedEC <= totalEC) {
+            // Save to local storage
+            localStorage.setItem("obtainedEC", obtainedEC);
+
+            // Update progress bar
+            updateProgressBar(obtainedEC);
+        }
+    });
+
+    // Load ECs when page loads
+    window.onload = loadECs;
+</script>
