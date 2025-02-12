@@ -337,7 +337,7 @@
 <body class="backgroundcolorindex">
 <!-- Nav bar -->
 <nav class="navbar navbar-expand-md navbar-dark navbarcolor">
-    <a class="navbar-brand" href="">Homepage</a>
+    <a class="navbar-brand" href="/">Homepage</a>
     <button
         class="navbar-toggler"
         type="button"
