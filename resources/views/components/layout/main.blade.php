@@ -407,3 +407,16 @@
 </footer>
 </body>
 </html>
+
+<script>
+    function instagram() {
+        window.open("https://www.instagram.com/carspotlars/", "_blank");
+    }
+
+    function github() {
+        window.open(
+            "https://github.com/Lars399?tab=overview&from=2024-09-01&to=2024-09-05",
+            "_blank"
+        );
+    }
+</script>

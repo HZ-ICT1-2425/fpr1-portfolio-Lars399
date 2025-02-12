@@ -94,3 +94,32 @@
     </div>
 
 </x-layout.main>
+
+<script>
+
+    /**
+     * functions to rederact to the blog posts
+     */
+
+    function studychoise() {
+        window.location.href = "blogpost/studychoise";
+    }
+
+    function swot() {
+        window.location.href = "blogpost/swot";
+    }
+
+    function feedback() {
+        window.location.href = "blogpost/feedback";
+    }
+
+    function experience() {
+        window.location.href = "blogpost/experience";
+    }
+
+    function ictarticle() {
+        window.location.href = "blogpost/ictarticle";
+    }
+
+
+</script>
