@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::resource('/',            WelcomeController::class);
+Route::resource('dashboard',    DashboardController::class);
+route::resource( 'profile',     ProfileController::class);
 
 Route::get('/faq', function () {
     return view('faq');
