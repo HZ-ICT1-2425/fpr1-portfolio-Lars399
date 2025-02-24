@@ -18,9 +18,7 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/blog', function () {
-    return view('blog');
-});
+Route::get('/blog', [PostController::class, 'index'])->name('blog'); // Overzichtspagina
 
 Route::get('/post/{id}', [PostController::class, 'getText']);
 
