@@ -1,4 +1,6 @@
-<x-layout.main>
+@extends('components.layout.main')
+
+@section('content')
 
     <!-- Main Content -->
     <div class="row triangle-background">
@@ -61,4 +63,4 @@
         <div class="col-sm-2"></div>
     </div>
 
-</x-layout.main>
+@endsection

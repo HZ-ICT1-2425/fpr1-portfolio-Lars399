@@ -1,4 +1,6 @@
-<x-layout.main>
+@extends('components.layout.main')
+
+@section('content')
 
     <style>
         /* Aangepaste CSS voor de tabelborder */
@@ -289,8 +291,7 @@
     </div>
     <br />
 
-</x-layout.main>
-
+@endsection
 
 <script>
     /**

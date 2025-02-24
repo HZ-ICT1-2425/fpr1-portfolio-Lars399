@@ -1,11 +1,13 @@
-<x-layout.main>
+@extends('components.layout.main')
+
+@section('content')
 
     <!-- First Row -->
     <div class="row triangle-background">
         <div class="col-sm-2"></div>
 
         <div class="col-sm-3">
-            <img alt="Me" class="indeximgmyself" src="{{ asset('img/mezelf.jpg') }}"  />
+            <img alt="Me" class="indeximgmyself" src="{{ asset('img/mezelf.jpg') }}" />
         </div>
 
         <div class="col-sm-5">
@@ -129,7 +131,4 @@
         <div class="col-sm-4"></div>
     </div>
 
-
-
-
-</x-layout.main>
+@endsection

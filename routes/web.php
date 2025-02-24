@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 
 Route::resource('/',            WelcomeController::class);
 Route::resource('dashboard',    DashboardController::class);
@@ -21,6 +22,7 @@ Route::get('/blog', function () {
     return view('blog');
 });
 
+Route::get('/post/{id}', [PostController::class, 'getText']);
 
 Route::get('/blogpost/experience', function () {
     return view('blogpost.experience');

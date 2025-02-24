@@ -1,4 +1,6 @@
-<x-layout.main>
+@extends('components.layout.main')
+
+@section('content')
 
     <div class="row triangle-background-reverse mt-4">
         <div class="col-sm-2"></div>
@@ -93,13 +95,15 @@
         <div class="col-sm-2"></div>
     </div>
 
-</x-layout.main>
+@endsection
+
 
 <script>
 
     /**
      * functions to rederact to the blog posts
      */
+
 
     function studychoise() {
         window.location.href = "blogpost/studychoise";

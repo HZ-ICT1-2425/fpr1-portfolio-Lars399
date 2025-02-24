@@ -68,7 +68,7 @@
     </div>
 </nav>
 
-{{$slot}}
+@yield('content') <!-- Hier wordt de pagina-content geplaatst -->
 
 <!-- Footer -->
 <footer class="footerbackground text-light text-center py-4">
