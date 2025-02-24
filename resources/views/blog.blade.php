@@ -6,12 +6,22 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-8">
-            <h2>Blogposts</h2>
 
             @foreach ($blogposts as $blogpost)
-                <a href="{{ url('/post/' . $blogpost->id) }}" class="btn btn-primary mb-2">
-                    View Post #{{ $blogpost->id }}
-                </a><br>
+                <div class="backgroundcolorblog">
+                    <section class="section1">
+                        <article class="article">
+                            <header>
+                                <h1 class="textcolorblog">{{ $blogpost->title }}</h1>
+                                <p class="textcolorblog">{{ $blogpost->introtext }}</p>
+                            </header>
+                            <p class="textcolorblog">{{ $blogpost->smalltext }}</p>
+                            <a href="{{ url('/posts/' . $blogpost->id) }}" class="btn btn-primary mb-2">
+                                View Post #{{ $blogpost->id }}
+                            </a>
+                        </article>
+                    </section>
+                </div>
             @endforeach
         </div>
 

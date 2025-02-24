@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Blogpost;
-use Illuminate\Support\Facades\Log;
-
 class PostController extends Controller
 {
     public function getText($id)

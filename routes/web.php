@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaqController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DashboardController;
@@ -9,18 +10,16 @@ use App\Http\Controllers\PostController;
 Route::resource('/',            WelcomeController::class);
 Route::resource('dashboard',    DashboardController::class);
 route::resource( 'profile',     ProfileController::class);
-
-Route::get('/faq', function () {
-    return view('faq');
-})->name('faq');
-
 Route::get('/profile', function () {
     return view('profile');
 });
 
+
+Route::get('/faq', [FaqController::class, 'index'])->name('faq'); // Overzichtspagina
+
 Route::get('/blog', [PostController::class, 'index'])->name('blog'); // Overzichtspagina
 
-Route::get('/post/{id}', [PostController::class, 'getText']);
+Route::get('/posts/{id}', [PostController::class, 'getText']);
 
 Route::get('/blogpost/experience', function () {
     return view('blogpost.experience');
