@@ -18,9 +18,16 @@ class PostController extends Controller
 
     public function index()
     {
-        $blogposts = Blogpost::all(); // Haal alle blogposts op
-        return view('blog', compact('blogposts')); // Stuur ze naar de view
+        $blogposts = Blogpost::all();
+        return view('blog', compact('blogposts'));
     }
 
+    public function destroy($id)
+    {
+        $blogpost = BlogPost::findOrFail($id);
+        $blogpost->delete();
+
+        return redirect()->back()->with('success', 'Het bericht is succesvol verwijderd!');
+    }
 
 }

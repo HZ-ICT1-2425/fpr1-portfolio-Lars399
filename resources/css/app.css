@@ -303,3 +303,7 @@ td {
 .footertext {
     color: white;
 }
+
+.deletebuttonstyle{
+    text-align: right;
+}

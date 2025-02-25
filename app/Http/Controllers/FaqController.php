@@ -21,7 +21,15 @@ class FaqController extends Controller
 
     public function index()
     {
-        $faqposts = Faq::all(); // Haal alle blogposts op
-        return view('faq', compact('faqposts')); // Stuur ze naar de view
+        $faqposts = Faq::all();
+        return view('faq', compact('faqposts'));
+    }
+
+    public function destroy($id)
+    {
+        $faqpost = Faq::findOrFail($id);
+        $faqpost->delete();
+
+        return redirect()->back()->with('success', 'FAQ post successfully deleted!');
     }
 }

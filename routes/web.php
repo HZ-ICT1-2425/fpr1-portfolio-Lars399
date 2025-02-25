@@ -14,29 +14,15 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
+//Everything related to FAQ and FAQ posts
 
-Route::get('/faq', [FaqController::class, 'index'])->name('faq'); // Overzichtspagina
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+Route::delete('/faqs/{id}', [FaqController::class, 'destroy'])->name('faqs.destroy');
 
-Route::get('/blog', [PostController::class, 'index'])->name('blog'); // Overzichtspagina
 
+//Everything related to blogs and blogposts
+
+Route::get('/blog', [PostController::class, 'index'])->name('blog');
 Route::get('/posts/{id}', [PostController::class, 'getText']);
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
-Route::get('/blogpost/experience', function () {
-    return view('blogpost.experience');
-});
-
-Route::get('/blogpost/feedback', function () {
-    return view('blogpost.feedback');
-});
-
-Route::get('/blogpost/ictarticle', function () {
-    return view('blogpost.ictarticle');
-});
-
-Route::get('/blogpost/studychoise', function () {
-    return view('blogpost.studychoise');
-});
-
-Route::get('/blogpost/swot', function () {
-    return view('blogpost.swot');
-});
