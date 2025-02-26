@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
@@ -12,10 +13,10 @@ class FaqController extends Controller
         $text = Faq::find($id);
 
         if (!$text) {
-            abort(404, 'FAQ niet gevonden');
+            abort(404, 'No FAQ posts found');
         }
 
-        return view('faq', ['text' => optional($text)->text ?? 'Geen tekst beschikbaar']);
+        return view('faq', ['text' => optional($text)->text ?? 'No text available']);
     }
 
 
@@ -31,5 +32,36 @@ class FaqController extends Controller
         $faqpost->delete();
 
         return redirect()->back()->with('success', 'FAQ post successfully deleted!');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'text' => 'required|string',
+        ]);
+
+        Faq::create([
+            'title' => $request->title,
+            'text' => $request->text,
+        ]);
+
+        return redirect()->back()->with('success', 'FAQ succesfully created!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'text' => 'required|string',
+        ]);
+
+        $faq = Faq::findOrFail($id);
+        $faq->update([
+            'title' => $request->title,
+            'text' => $request->text,
+        ]);
+
+        return redirect()->back()->with('success', 'FAQ succesfully updated!');
     }
 }

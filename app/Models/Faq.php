@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Faq extends Model
 {
     use HasFactory;
-    protected $fillable = ['content'];
+    protected $fillable = ['title', 'text'];
+
+    public $timestamps = false;
 }
